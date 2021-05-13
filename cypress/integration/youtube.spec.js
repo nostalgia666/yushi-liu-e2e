@@ -15,7 +15,7 @@ describe('My RISE assignment', () => {
         cy.get('button[id=search-icon-legacy]').click()
 
         // Open the video and wait for the page to load
-        cy.intercept('POST', '/watch?v=6_pru8U2RmM&pbj=1').as('getPage')
+        cy.intercept('GET', '/videoplayback?*').as('getPage')
         cy.get('a[title="The whole working-from-home thing — Apple"]').eq(0).click()
         cy.wait('@getPage').its('response.statusCode').should('eq', 200)
 
